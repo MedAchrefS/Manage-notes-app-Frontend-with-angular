@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-card-title>Note List</mat-card-title>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let Note of Notes">
+        <a mat-button [routerLink]="['/note-edit', Note.id]">{{Note.title}}</a>
+        <a mat-button (click)="deleteUser(Note.id)">Delete</a>
+        <h3 mat-line>{{Note.title}}</h3>
+        <h3 mat-line>{{Note.content}}</h3>
+        <h3 mat-line>{{Note.createdAt}}</h3>
+        <h3 mat-line>{{Note.updatedAt}}</h3>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <button mat-fab color="primary" [routerLink]="['/note-add']">Add</button>
+</mat-card>

@@ -1,0 +1,28 @@
+<mat-card>
+  <form #noteForm="ngForm" (ngSubmit)="save(noteForm.value)">
+    <mat-card-header>
+      <mat-card-title><h2>{{note.title ? 'Edit' : 'Add'}} Note</h2></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <input type="hidden" name="id" [(ngModel)]="note.id">
+      <mat-form-field>
+        <input matInput placeholder="Note title" [(ngModel)]="note.title"
+               required name="title" #name>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Note content" [(ngModel)]="note.content"
+               required name="content" #content>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit"
+              [disabled]="!noteForm.form.valid">Save</button>
+      <button mat-raised-button color="secondary" (click)="remove(note.href)"
+              *ngIf="note.href" type="button">Delete</button>
+      <a mat-button routerLink="/note-list">Cancel</a>
+    </mat-card-actions>
+    <mat-card-footer>
+     
+    </mat-card-footer>
+  </form>
+</mat-card>
